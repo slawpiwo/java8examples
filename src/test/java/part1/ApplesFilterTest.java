@@ -5,8 +5,10 @@ import share.Apple;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 
 public class ApplesFilterTest {
@@ -47,6 +49,32 @@ public class ApplesFilterTest {
         assertThat(result.size()).isEqualTo(1);
         assertThat(result.get(0).getWeight()).isEqualTo(160);
         assertThat(result.get(0).getColor()).isEqualTo("red");
+    }
+
+    @Test
+    public void shouldReturnLightAndGreenWithCustomPredicate() {
+        //when
+        result = filter.filter(inventory, new LightAndGreenPredicate());
+
+        //then
+        assertThat(result.size()).isEqualTo(1);
+        assertThat(result.get(0).getWeight()).isEqualTo(80);
+        assertThat(result.get(0).getColor()).isEqualTo("green");
+    }
+
+    // filtering using an anonymous class
+    @Test
+    public void shouldFilterByColorWithAnonymousClass() {
+        //when
+        result = filter.filter(inventory, new Predicate<Apple>() {
+            @Override
+            public boolean test(Apple apple) {
+                return "red".equals(apple.getColor());
+            }
+        });
+
+        //then
+        assertThat(result.size()).isEqualTo(1);
     }
 
     private static boolean isHeavyAndRed(Apple apple) {
