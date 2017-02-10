@@ -1,0 +1,11 @@
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+*.java.orig
+*.xml.orig
+atlassian-ide-plugin.xml
+.idea/
+/target/
+
