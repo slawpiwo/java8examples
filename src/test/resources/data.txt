@@ -1,0 +1,4 @@
+Execute around pattern
+with Java 8,
+functional interface
+and lambdas in action
