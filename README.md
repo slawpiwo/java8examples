@@ -6,3 +6,4 @@ part1:
  - Sorting with Comparator
  - Using Comparator
  - The execute around pattern - BufferedReaderProcessor
+ - Using functional interfaces
